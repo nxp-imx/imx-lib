@@ -87,6 +87,11 @@ int pxp_config_channel(pxp_chan_handle_t *pxp_chan, struct pxp_config_data *pxp_
 	pxp_conf->handle = pxp_chan->handle;
 	dbg(DBG_INFO, "channel handle %d\n\n", pxp_conf->handle);
 
+#ifdef PXP_DEVICE_LEGACY
+        dbg(DBG_INFO, "use legacy pxp driver\n");
+        pxp_conf->proc_data.pxp_legacy = true;
+#endif
+
 	ret = ioctl(fd, PXP_IOC_CONFIG_CHAN, pxp_conf);
 
 	return ret;
