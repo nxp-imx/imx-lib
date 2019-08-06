@@ -16,7 +16,6 @@ LOCAL_SHARED_LIBRARIES := libutils libc liblog
 LOCAL_MODULE := libcec
 LOCAL_LD_FLAGS += -nostartfiles
 LOCAL_PRELINK_MODULE := false
-LOCAL_MODULE_TAGS := eng
 include $(BUILD_SHARED_LIBRARY)
 
 endif

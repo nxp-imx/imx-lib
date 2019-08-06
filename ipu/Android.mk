@@ -20,6 +20,5 @@ LOCAL_SHARED_LIBRARIES := libutils libc libcutils
 LOCAL_MODULE := libipu
 LOCAL_LD_FLAGS += -nostartfiles
 LOCAL_PRELINK_MODULE := false
-LOCAL_MODULE_TAGS := eng
 include $(BUILD_SHARED_LIBRARY)
 endif
