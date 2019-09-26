@@ -32,10 +32,10 @@ func libcecDefaultsFactory() (android.Module) {
 
 func libcecDefaults(ctx android.LoadHookContext) {
     type props struct {
-        Cflags []string
         Target struct {
                 Android struct {
                         Enabled *bool
+                        Cflags []string
                 }
         }
     }
@@ -47,11 +47,11 @@ func libcecDefaults(ctx android.LoadHookContext) {
         p.Target.Android.Enabled = proptools.BoolPtr(false)
     }
     if ctx.Config().VendorConfig("IMXPLUGIN").String("BOARD_SOC_CLASS") == "IMX6" {
-        p.Cflags = append(p.Cflags, "-DBUILD_FOR_ANDROID")
-        p.Cflags = append(p.Cflags, "-DIMX6Q")
+        p.Target.Android.Cflags = append(p.Target.Android.Cflags, "-DBUILD_FOR_ANDROID")
+        p.Target.Android.Cflags = append(p.Target.Android.Cflags, "-DIMX6Q")
     } else {
-        p.Cflags = append(p.Cflags, "-DBUILD_FOR_ANDROID")
-        p.Cflags = append(p.Cflags, "-D"+ ctx.Config().VendorConfig("IMXPLUGIN").String("BOARD_SOC_TYPE"))
+        p.Target.Android.Cflags = append(p.Target.Android.Cflags, "-DBUILD_FOR_ANDROID")
+        p.Target.Android.Cflags = append(p.Target.Android.Cflags, "-D"+ ctx.Config().VendorConfig("IMXPLUGIN").String("BOARD_SOC_TYPE"))
     }
 
     ctx.AppendProperties(p)

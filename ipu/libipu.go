@@ -32,10 +32,10 @@ func libipuDefaultsFactory() (android.Module) {
 
 func libipuDefaults(ctx android.LoadHookContext) {
     type props struct {
-        srcs []string
         Target struct {
                 Android struct {
                         Enabled *bool
+                        Srcs []string
                 }
         }
     }
@@ -47,10 +47,10 @@ func libipuDefaults(ctx android.LoadHookContext) {
         p.Target.Android.Enabled = proptools.BoolPtr(false)
     }
     if ctx.Config().VendorConfig("IMXPLUGIN").String("BOARD_SOC_CLASS") == "IMX5X" {
-        p.srcs = append(p.srcs, "mxc_ipu_hl_lib.c")
-        p.srcs = append(p.srcs, "mxc_ipu_lib.c")
+        p.Target.Android.Srcs = append(p.Target.Android.Srcs, "mxc_ipu_hl_lib.c")
+        p.Target.Android.Srcs = append(p.Target.Android.Srcs, "mxc_ipu_lib.c")
     } else {
-        p.srcs = append(p.srcs, "mxc_ipu_hl_lib_dummy.c")
+        p.Target.Android.Srcs = append(p.Target.Android.Srcs, "mxc_ipu_hl_lib_dummy.c")
     }
 
     ctx.AppendProperties(p)
