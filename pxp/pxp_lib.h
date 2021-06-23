@@ -17,6 +17,7 @@
 #define	PXP_LIB_H
 
 #include <linux/pxp_device.h>
+#include <linux/dma-buf.h>
 
 #ifndef true
 #define true    1
@@ -36,5 +37,6 @@ int pxp_start_channel(pxp_chan_handle_t *pxp_chan);
 int pxp_wait_for_completion(pxp_chan_handle_t *pxp_chan, int times);
 int pxp_get_mem(struct pxp_mem_desc *mem);
 int pxp_put_mem(struct pxp_mem_desc *mem);
+int pxp_get_buf_from_fd(int fd);
 
 #endif

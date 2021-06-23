@@ -22,6 +22,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <string.h>
 
 #include "pxp_lib.h"
 
@@ -225,4 +226,21 @@ int pxp_put_mem(struct pxp_mem_desc *mem)
 		return ret;
 
 	return 0;
+}
+
+int pxp_get_buf_from_fd(int fd)
+{
+	struct dma_buf_phys query;
+	int physAddr = 0;
+	int ret;
+
+	memset(&query, 0x0, sizeof(struct dma_buf_phys));
+	ret = ioctl(fd, DMA_BUF_IOCTL_PHYS, &query);
+	if (ret < 0) {
+		dbg(DBG_ERR, "%s: Can't get buffer from file descriptor\n", __func__);
+		return ret;
+	}
+	physAddr = (int)query.phys;
+
+	return physAddr;
 }
