@@ -152,7 +152,7 @@ int pxp_get_phymem(struct pxp_mem_desc *mem)
 		return -1;
 	}
 
-	dbg(DBG_INFO, "succeed mem.phys_addr = 0x%08x\n", mem->phys_addr);
+	dbg(DBG_INFO, "succeed mem.phys_addr = 0x%08lx\n", mem->phys_addr);
 	return 0;
 }
 
@@ -181,8 +181,8 @@ int pxp_get_virtmem(struct pxp_mem_desc *mem)
 		return -1;
 	}
 
-	mem->virt_uaddr = (unsigned long)va_addr;
-	dbg(DBG_INFO, "virt addr = %08x\n", mem->virt_uaddr);
+	mem->virt_uaddr = va_addr;
+	dbg(DBG_INFO, "virt addr = %p\n", mem->virt_uaddr);
 
 	return 0;
 }
