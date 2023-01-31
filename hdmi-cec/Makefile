@@ -7,11 +7,13 @@ OBJ = mxc_hdmi-cec.o
 LIBNAME = libcec
 SONAMEVERSION=1
 
+libdir ?= "/usr/lib"
+
 all: $(LIBNAME).so $(LIBNAME).a
 
 install: install_headers
-	@mkdir -p $(DEST_DIR)/usr/lib
-	cp -P $(LIBNAME).* $(DEST_DIR)/usr/lib
+	@mkdir -p $(DEST_DIR)$(libdir)
+	cp -P $(LIBNAME).* $(DEST_DIR)$(libdir)
 
 install_headers:
 	@mkdir -p $(DEST_DIR)/usr/include

@@ -7,11 +7,13 @@ OBJS = mxc_ipu_hl_lib_dummy.o
 LIBNAME=libipu
 SONAMEVERSION=0
 
+libdir ?= "/usr/lib"
+
 all: $(LIBNAME).so
 
 install:
-	@mkdir -p $(DEST_DIR)/usr/lib
-	cp -P $(LIBNAME).* $(DEST_DIR)/usr/lib
+	@mkdir -p $(DEST_DIR)$(libdir)
+	cp -P $(LIBNAME).* $(DEST_DIR)$(libdir)
 	@mkdir -p $(DEST_DIR)/usr/include
 	cp mxc_ipu_hl_lib.h $(DEST_DIR)/usr/include
 	cp ipu.h $(DEST_DIR)/usr/include
