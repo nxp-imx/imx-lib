@@ -1,0 +1,9 @@
+Package:                     imx-lib.git
+Version:
+Outgoing License:            LGPL-2.1
+License File:                LICENSE
+Type of Content:             source
+Description and comments:    BSP libraries
+Release Location:            https://github.com/nxp-imx/imx-lib -b lf-6.1.1_1.0.0
+Origin:                      NXP (LGPL-2.1)
+
